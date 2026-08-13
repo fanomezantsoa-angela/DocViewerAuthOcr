@@ -14,6 +14,7 @@ class Entity(BaseModel):
     start: int
     end: int
     confidence: float = Field(ge=0.0, le=1.0)
+    context: str | None = None
 
 
 class NERResponse(BaseModel):

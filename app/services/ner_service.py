@@ -13,6 +13,7 @@ def analyze_text(nlp: Language, text: str) -> NERResponse:
             start=ent.start_char,
             end=ent.end_char,
             confidence=1.0,
+            context=doc.text[ent.start_char - 30 : ent.end_char + 30] if ent.start_char >= 30 else doc.text[: ent.end_char + 30],
         )
         for ent in doc.ents
     ]
