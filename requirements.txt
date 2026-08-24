@@ -13,7 +13,7 @@ alembic==1.13.2
 
 
 # NER
-spacy==3.8.14
+spacy==3.8.16
 
 # Utils
 python-dotenv==1.0.1
