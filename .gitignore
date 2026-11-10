@@ -3,4 +3,12 @@ __pycache__/
 *.pyo
 *.egg-info/
 .venv/
-.env/
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+
+# Local secrets and databases: never commit these
+.env
+.env.*
+!.env.example
+*.db
