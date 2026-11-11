@@ -6,7 +6,7 @@ import spacy
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
-from app.routers import ner
+from app.routers import ner, ocr
 
 
 @asynccontextmanager
@@ -26,4 +26,6 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-app.include_router(ner.router)
+# The Express backend calls /api/ner/analyze and /api/ocr.
+app.include_router(ner.router, prefix="/api")
+app.include_router(ocr.router, prefix="/api")

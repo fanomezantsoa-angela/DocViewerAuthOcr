@@ -1,12 +1,16 @@
 services:
   - type: web
     name: ner-extraction-api
-    env: python
+    runtime: docker
+    dockerfilePath: ./Dockerfile
     plan: free
-    buildCommand: pip install -r requirements.txt && python -m spacy download en_core_web_sm
-    startCommand: uvicorn app.main:app --host 0.0.0.0 --port $PORT
     autoDeploy: true
     healthCheckPath: /docs
     envVars:
-      - key: PYTHON_VERSION
-        value: 3.11.9
+      # Secrets are set in the Render dashboard, never stored in this file.
+      - key: SECRET_KEY
+        sync: false
+      - key: DATABASE_URL
+        sync: false
+      - key: FRONTEND_ORIGIN
+        sync: false
